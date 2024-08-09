@@ -100,6 +100,11 @@ WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 
 SQLLAB_CTAS_NO_LIMIT = True
 
+SECRET_KEY =  '\5\1\5u+392ejjrkjoddYYko3-VMVK8EWhsawHCW3Vk0Oz8prAjbs+5FZRD2dTpxvxCJbbcVpTtBNVZbZ4\2\3\6'
+
+MAPBOX_API_KEY='pk.eyJ1IjoiZGFyd2luZGF2aWQiLCJhIjoiY2x6amoxdDlyMHE2bTJrczF0cGJpMjlubiJ9.rBeTbsGotEFUVZ9pPFKNDg'
+
+
 #
 # Optionally import superset_config_docker.py (which will have been included on
 # the PYTHONPATH) in order to allow for local settings to be overridden
@@ -107,7 +112,8 @@ SQLLAB_CTAS_NO_LIMIT = True
 try:
     import superset_config_docker
     from superset_config_docker import *  # noqa
-
+    MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", "")
+    print(MAPBOX_API_KEY)
     logger.info(
         f"Loaded your Docker configuration at " f"[{superset_config_docker.__file__}]"
     )
